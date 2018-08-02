@@ -32,9 +32,17 @@ public class UserDao {
 
     public boolean update(User testUser) {
         for (User user : users) {
-            if (user.getFirstName().equalsIgnoreCase(testUser.getFirstName()) ||
-                    user.getSecondName().equalsIgnoreCase(testUser.getSecondName())) {
-
+            if (user.getFirstName().equalsIgnoreCase(testUser.getFirstName())) {
+                user.setSecondName(testUser.getSecondName());
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean remove(String name) {
+        for (User user : users) {
+            if (user.getFirstName().equalsIgnoreCase(name) || user.getSecondName().equalsIgnoreCase(name)) {
+                users.remove(user);
                 return true;
             }
         }
